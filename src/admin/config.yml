@@ -15,12 +15,19 @@ collections:
         fields:
           - {label: "Hero Tagline", name: "tagline", widget: "string"}
           - {label: "Approach Introduction", name: "approach_intro", widget: "text"}
+          - {label: "Hormonal Health Title", name: "hormonal_health_title", widget: "string"}
+          - {label: "Hormonal Health Text", name: "hormonal_health_text", widget: "text"}
+          - {label: "Qualification Intro 1", name: "qual_intro_1", widget: "text"}
+          - {label: "Qualification Intro 2", name: "qual_intro_2", widget: "text"}
+          - {label: "Qualification Intro 3", name: "qual_intro_3", widget: "text"}
           
   - name: "approach"
     label: "Approach Cards"
     folder: "src/_data/approach"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
@@ -31,6 +38,8 @@ collections:
     folder: "src/_data/classes"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Class Name", name: "title", widget: "string"}
       - {label: "Label (short version)", name: "label", widget: "string"}
@@ -46,6 +55,8 @@ collections:
     folder: "src/_data/qualifications"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Qualification Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
@@ -56,6 +67,8 @@ collections:
     folder: "src/_data/faq"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     fields:
       - {label: "Question", name: "question", widget: "string"}
       - {label: "Answer", name: "answer", widget: "text"}
