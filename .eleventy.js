@@ -5,6 +5,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
   
+  // Create collections from data files
+  eleventyConfig.addCollection("approach", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/_data/approach/*.json");
+  });
+  
+  eleventyConfig.addCollection("classes", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/_data/classes/*.json");
+  });
+  
+  eleventyConfig.addCollection("qualifications", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/_data/qualifications/*.json");
+  });
+  
+  eleventyConfig.addCollection("faq", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/_data/faq/*.json");
+  });
+  
   return {
     dir: {
       input: "src",
@@ -12,6 +29,7 @@ module.exports = function(eleventyConfig) {
       includes: "_includes",
       layouts: "_layouts"
     },
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk"
   };
 };
