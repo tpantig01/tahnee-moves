@@ -23,10 +23,10 @@ title: Flexibility & Pole Classes
     </p>
     
     <div class="approach-grid">
-        {% for item in collections.approach | sort(false, false, 'data.order') %}
+        {% for card in approachCards %}
         <div class="approach-card fade-in">
-            <h3>{{ item.data.title }}</h3>
-            <p>{{ item.data.description }}</p>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
         </div>
         {% endfor %}
     </div>
@@ -49,8 +49,8 @@ title: Flexibility & Pole Classes
 
         <div class="fade-in">
             <ul class="qual-list">
-                {% for item in collections.qualifications | sort(false, false, 'data.order') %}
-                <li><strong>{{ item.data.title }}</strong> {{ item.data.description }}</li>
+                {% for item in qualificationsData %}
+                <li><strong>{{ item.title }}</strong> {{ item.description }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -62,21 +62,21 @@ title: Flexibility & Pole Classes
     <h2 class="section-title">Sample Classes</h2>
     
     <div class="class-grid">
-        {% for class in collections.classes %}
+        {% for class in classesData %}
         <div class="class-card fade-in">
-            <div class="class-label" style="{% if class.data.color == 'hot-pink' %}background: var(--hot-pink); color: var(--white);{% elif class.data.color == 'sky-blue' %}background: var(--sky-blue); color: var(--black);{% else %}background: var(--lime); color: var(--black);{% endif %}">
-                {{ class.data.label | replace(" ", "<br>") | safe }}
+            <div class="class-label" style="{% if class.color == 'hot-pink' %}background: var(--hot-pink); color: var(--white);{% elif class.color == 'sky-blue' %}background: var(--sky-blue); color: var(--black);{% else %}background: var(--lime); color: var(--black);{% endif %}">
+                {{ class.label | replace(" ", "<br>") | safe }}
             </div>
             <div class="class-details">
-                <h3>{{ class.data.title }}</h3>
+                <h3>{{ class.title }}</h3>
                 <div class="class-meta">
-                    <span>{{ class.data.duration }}</span>
-                    <span>{{ class.data.level }}</span>
+                    <span>{{ class.duration }}</span>
+                    <span>{{ class.level }}</span>
                 </div>
-                <p>{{ class.data.description1 }}</p>
-                <p>{{ class.data.description2 }}</p>
+                <p>{{ class.description1 }}</p>
+                <p>{{ class.description2 }}</p>
                 <div class="class-highlights">
-                    {% for highlight in class.data.highlights %}
+                    {% for highlight in class.highlights %}
                     <span class="highlight-tag">{{ highlight }}</span>
                     {% endfor %}
                 </div>
@@ -91,11 +91,11 @@ title: Flexibility & Pole Classes
     <h2 class="section-title">Frequently Asked Questions</h2>
     
     <div class="faq-list">
-        {% for item in collections.faq | sort(false, false, 'data.order') %}
+        {% for item in faqData %}
         <div class="faq-item fade-in">
-            <div class="faq-question">{{ item.data.question }}</div>
+            <div class="faq-question">{{ item.question }}</div>
             <div class="faq-answer">
-                <p>{{ item.data.answer }}</p>
+                <p>{{ item.answer }}</p>
             </div>
         </div>
         {% endfor %}

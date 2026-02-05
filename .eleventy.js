@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 module.exports = function(eleventyConfig) {
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/css");
@@ -5,21 +8,40 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
   
-  // Create collections from data files
-  eleventyConfig.addCollection("approach", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/_data/approach/*.json");
+  // Add global data that reads and sorts JSON files
+  eleventyConfig.addGlobalData("approachCards", () => {
+    const dir = path.join(__dirname, 'src/_data/approach');
+    const files = fs.readdirSync(dir);
+    return files
+      .filter(file => file.endsWith('.json'))
+      .map(file => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')))
+      .sort((a, b) => a.order - b.order);
   });
   
-  eleventyConfig.addCollection("classes", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/_data/classes/*.json");
+  eleventyConfig.addGlobalData("classesData", () => {
+    const dir = path.join(__dirname, 'src/_data/classes');
+    const files = fs.readdirSync(dir);
+    return files
+      .filter(file => file.endsWith('.json'))
+      .map(file => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')));
   });
   
-  eleventyConfig.addCollection("qualifications", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/_data/qualifications/*.json");
+  eleventyConfig.addGlobalData("qualificationsData", () => {
+    const dir = path.join(__dirname, 'src/_data/qualifications');
+    const files = fs.readdirSync(dir);
+    return files
+      .filter(file => file.endsWith('.json'))
+      .map(file => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')))
+      .sort((a, b) => a.order - b.order);
   });
   
-  eleventyConfig.addCollection("faq", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/_data/faq/*.json");
+  eleventyConfig.addGlobalData("faqData", () => {
+    const dir = path.join(__dirname, 'src/_data/faq');
+    const files = fs.readdirSync(dir);
+    return files
+      .filter(file => file.endsWith('.json'))
+      .map(file => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')))
+      .sort((a, b) => a.order - b.order);
   });
   
   return {
