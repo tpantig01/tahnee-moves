@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "src/_data/homepage.json"
+        fields:
+          - {label: "Hero Tagline", name: "tagline", widget: "string"}
+          - {label: "Approach Introduction", name: "approach_intro", widget: "text"}
+          
+  - name: "approach"
+    label: "Approach Cards"
+    folder: "src/_data/approach"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Order", name: "order", widget: "number"}
+      
+  - name: "classes"
+    label: "Classes"
+    folder: "src/_data/classes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Class Name", name: "title", widget: "string"}
+      - {label: "Label (short version)", name: "label", widget: "string"}
+      - {label: "Duration", name: "duration", widget: "string"}
+      - {label: "Level", name: "level", widget: "string"}
+      - {label: "Description Paragraph 1", name: "description1", widget: "text"}
+      - {label: "Description Paragraph 2", name: "description2", widget: "text"}
+      - {label: "Highlights", name: "highlights", widget: "list"}
+      - {label: "Accent Color", name: "color", widget: "select", options: ["lime", "hot-pink", "sky-blue"]}
+      
+  - name: "qualifications"
+    label: "Qualifications"
+    folder: "src/_data/qualifications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Qualification Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Order", name: "order", widget: "number"}
+      
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/_data/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Question", name: "question", widget: "string"}
+      - {label: "Answer", name: "answer", widget: "text"}
+      - {label: "Order", name: "order", widget: "number"}
